@@ -7,20 +7,15 @@
 
 import UIKit
 
-protocol AchievementAlertDelegate {
-    func presentAchievementAlert(model: AchievementsModel, title: String, message: String)
-}
 
 class AchievementsModel {
     
-    var delegate: AchievementAlertDelegate?  {
-        didSet {
-            print("New delegate is set: \(delegate)")
-        }
-    }
 
     var timer = Timer()
     
+    //
+    var eventNotifier = EventNotifierService.shared
+    //
     
     func trackARViewsAchievement(id: Int) {
         switch id {
@@ -59,14 +54,11 @@ class AchievementsModel {
             AppDefaultsData.uranusARPageVisited,
             AppDefaultsData.neptuneARPageVisited
         ]
-        print(arVisited)
         if arVisited.allSatisfy({$0 == true}) {
             if AppDefaultsData.viewAllPlanetsInAR == false {
                 AppDefaultsData.viewAllPlanetsInAR = true
                 print("Completed ARView Achievement!")
-                print("The delegate for this achievement was: \(delegate)")
-                delegate?.presentAchievementAlert(model: self, title: "Achievement #1 unlocked!", message: "You have seen all planets in AR")
-                presentAlert()
+                eventNotifier.publisher.send(.didSeen10PlanetsinAR(title: "Achievement #1 Unlocked", message: "You have seen all planets in AR!"))
             }
         }
     }
@@ -114,9 +106,7 @@ class AchievementsModel {
             if AppDefaultsData.seenAllWikiPages == false {
                 AppDefaultsData.seenAllWikiPages = true
                 print("Completed Wiki Achievement!")
-                print("The delegate for this achievement was: \(delegate)")
-                delegate?.presentAchievementAlert(model: self, title: "Achievement #2 unlocked!", message: "You have visited all Wiki pages! New day - new knowledge :)")
-                presentAlert()
+                eventNotifier.publisher.send(.didVisit10WikiPages(title: "Achievement #2 Unlocked", message: "You have visited all Wiki pages!"))
             }
         }
     }
@@ -131,9 +121,7 @@ class AchievementsModel {
             if AppDefaultsData.spent10MinutesInApp == false {
                 AppDefaultsData.spent10MinutesInApp = true
                 print("Completed 10 Min Achievement!")
-                print("The delegate for this achievement was: \(delegate)")
-                delegate?.presentAchievementAlert(model: self, title: "Achievement #3 unlocked!", message: "You have been using app for 10 minutes total! Hope you enjoy :)")
-                presentAlert()
+                eventNotifier.publisher.send(.didSpentElegibleTimeInApp(title: "Achievement #3 Unlocked", message: "You have spent 10 minutes in Zenith App!"))
             }
         }
     }
@@ -149,8 +137,7 @@ class AchievementsModel {
         if AppDefaultsData.changeSomeSettings == false {
             AppDefaultsData.changeSomeSettings = true
             print("Completed Settings Achievement!")
-            print("The delegate for this achievement was: \(delegate)")
-            delegate?.presentAchievementAlert(model: self, title: "Achievement #4 Unlocked!", message: "You have changed settings for the first time :)")
+            eventNotifier.publisher.send(.didUpdateSettings(title: "Achievement #4 Unlocked", message: "You have updated settings for the first time!"))
         }
     }
     
@@ -163,16 +150,8 @@ class AchievementsModel {
             if AppDefaultsData.openMarsPage10Times == false {
                 AppDefaultsData.openMarsPage10Times = true
                 print("Completed Mars Achievement!")
-                print("The delegate for this achievement was: \(delegate)")
-                delegate?.presentAchievementAlert(model: self, title: "Achievement #5 unlocked!", message: "You have visited Mars page 10 times! Good job!")
-                presentAlert()
+                eventNotifier.publisher.send(.didVisitMarsPage10Times(title: "Achievement #5 Unlocked", message: "You have visited Mars page 10 times!"))
             }
-            
         }
-    }
-   
-    
-    func presentAlert() {
-        print("Alert is presented!")
     }
 }

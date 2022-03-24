@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Combine
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AchievementAlertDelegate {
+class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
     
@@ -31,7 +32,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
         collectionView.reloadData()
-        achievementModel.delegate = self
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -49,7 +49,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.iconImage2.image = UIImage(named: info.iconName!)
         cell.shortDescriptionLabel.text = info.shortDescription
         cell.planetTypeLabel.text = "Type: \(info.type!)"
-
+        
         if AppDefaultsData.weightRelativeToEarth == true {
             cell.massLabel.text = "Mass: \(info.massInEarths!)"
         } else {
@@ -81,7 +81,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         let height = collectionView.bounds.height
         let width = collectionView.bounds.width
         return CGSize(width: width , height: height )
@@ -105,11 +105,5 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView.dataSource = self
     }
     
-    func presentAchievementAlert(model: AchievementsModel, title: String, message: String) {
-        print("ALERT!!!!!!!!!!!!")
-                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-    }
 }
 

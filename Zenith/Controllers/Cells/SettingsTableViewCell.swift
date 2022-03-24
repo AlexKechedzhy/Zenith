@@ -15,7 +15,8 @@ class SettingsTableViewCell: UITableViewCell {
     var settingType: Settings?
     var appDefaults = AppDefaultsData()
     let achievementsModel = AchievementsModel()
-    var achievementDelegate: AchievementAlertDelegate?
+    
+    var eventNotifier = EventNotifierService.shared
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +31,6 @@ class SettingsTableViewCell: UITableViewCell {
     }
     
     @IBAction func switchButton(_ sender: UISwitch) {
-        achievementsModel.delegate = achievementDelegate
         achievementsModel.trackSettingsAchievement()
         if sender.isOn {
             appDefaults.update(key: settingType!.key, value: true)
@@ -41,7 +41,6 @@ class SettingsTableViewCell: UITableViewCell {
     
   
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        achievementsModel.delegate = achievementDelegate
         achievementsModel.trackSettingsAchievement()
         if sender.selectedSegmentIndex == 0 {
             AppDefaultsData.temperatureUnit = 0
@@ -51,5 +50,6 @@ class SettingsTableViewCell: UITableViewCell {
             AppDefaultsData.temperatureUnit = 2
         }
     }
+    
     
 }

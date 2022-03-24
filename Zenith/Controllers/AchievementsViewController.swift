@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AchievementsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AchievementAlertDelegate {
+class AchievementsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     
@@ -24,7 +24,6 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        achievementModel.delegate = self
         updateAchievementsArray()
         tableView.reloadData()
     }
@@ -63,13 +62,8 @@ class AchievementsViewController: UIViewController, UITableViewDelegate, UITable
             AppDefaultsData.seenAllWikiPages,
             AppDefaultsData.spent10MinutesInApp,
             AppDefaultsData.changeSomeSettings,
-            AppDefaultsData.openMarsPage10Times]
+            AppDefaultsData.openMarsPage10Times
+        ]
     }
     
-    func presentAchievementAlert(model: AchievementsModel, title: String, message: String) {
-        print("ALERT!!!!!!!!!!!!")
-                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-    }
 }

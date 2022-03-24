@@ -9,7 +9,7 @@ import UIKit
 import ARKit
 import SceneKit
 
-class ARViewController: UIViewController, ARSCNViewDelegate, AchievementAlertDelegate {
+class ARViewController: BaseViewController, ARSCNViewDelegate {
     
     
     
@@ -20,7 +20,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate, AchievementAlertDel
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        achievementsModel.delegate = self
         achievementsModel.trackARViewsAchievement(id: (info?.id)!)
         let configuration = ARWorldTrackingConfiguration()
         
@@ -83,13 +82,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate, AchievementAlertDel
         ringNode.eulerAngles = SCNVector3(x: 0.2, y: 0, z: 0.2)
         ringNode.runAction(SCNAction.rotate(by: -.pi * 120, around: SCNVector3(0, 1, 0), duration: 10000))
         sceneView.scene.rootNode.addChildNode(ringNode)
-    }
-    
-    func presentAchievementAlert(model: AchievementsModel, title: String, message: String) {
-        print("ALERT!!!!!!!!!!!!")
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
     
 }

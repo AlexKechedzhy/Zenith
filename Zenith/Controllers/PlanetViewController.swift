@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PlanetViewController: UIViewController, AchievementAlertDelegate {
+class PlanetViewController: BaseViewController {
     
     
     
@@ -30,7 +30,6 @@ class PlanetViewController: UIViewController, AchievementAlertDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        achievementsModel.delegate = self
         self.navigationController?.isNavigationBarHidden = false
         if info?.name == "Mars" {
             achievementsModel.trackMarsVisitsAchievement()
@@ -70,10 +69,4 @@ class PlanetViewController: UIViewController, AchievementAlertDelegate {
         wikiButtonView.layer.cornerRadius = 15
     }
     
-    func presentAchievementAlert(model: AchievementsModel, title: String, message: String) {
-        print("ALERT!!!!!!!!!!!!")
-                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-    }
 }

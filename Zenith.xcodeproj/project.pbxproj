@@ -35,6 +35,8 @@
 		34DD2D5627EA205A006B017C /* UnlockedAchievementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DD2D5427EA205A006B017C /* UnlockedAchievementTableViewCell.swift */; };
 		34DD2D5727EA205A006B017C /* UnlockedAchievementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34DD2D5527EA205A006B017C /* UnlockedAchievementTableViewCell.xib */; };
 		34DD2D5927EB1575006B017C /* AchievementsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DD2D5827EB1575006B017C /* AchievementsModel.swift */; };
+		34DD2D5C27EC846A006B017C /* EventNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DD2D5B27EC846A006B017C /* EventNotifier.swift */; };
+		34DD2D5E27EC8D28006B017C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DD2D5D27EC8D28006B017C /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,8 @@
 		34DD2D5427EA205A006B017C /* UnlockedAchievementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockedAchievementTableViewCell.swift; sourceTree = "<group>"; };
 		34DD2D5527EA205A006B017C /* UnlockedAchievementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnlockedAchievementTableViewCell.xib; sourceTree = "<group>"; };
 		34DD2D5827EB1575006B017C /* AchievementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsModel.swift; sourceTree = "<group>"; };
+		34DD2D5B27EC846A006B017C /* EventNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNotifier.swift; sourceTree = "<group>"; };
+		34DD2D5D27EC8D28006B017C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		3E909AE5E662BCA6C37FDD99 /* Pods-Zenith.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zenith.release.xcconfig"; path = "Target Support Files/Pods-Zenith/Pods-Zenith.release.xcconfig"; sourceTree = "<group>"; };
 		D68BB8A2A738C7B4A5EF024F /* Pods_Zenith.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zenith.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -119,6 +123,7 @@
 				34C7405527E0B574003F4E67 /* SceneDelegate.swift */,
 				34DD2CF427E37BB7006B017C /* UserDefaultsWrapper.swift */,
 				34DD2CF827E37D29006B017C /* Constants.swift */,
+				34DD2D5D27EC8D28006B017C /* BaseViewController.swift */,
 				34C7407927E0F507003F4E67 /* Models */,
 				34C7406727E0B9CE003F4E67 /* Controllers */,
 				34C7406827E0B9D8003F4E67 /* Views */,
@@ -166,6 +171,7 @@
 				34DD2CEC27E3477C006B017C /* DataLoader.swift */,
 				34DD2D5827EB1575006B017C /* AchievementsModel.swift */,
 				34DD2CF627E37C70006B017C /* AppDefaultsData.swift */,
+				34DD2D5B27EC846A006B017C /* EventNotifier.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -309,10 +315,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34DD2D5C27EC846A006B017C /* EventNotifier.swift in Sources */,
 				34DD2CED27E3477C006B017C /* DataLoader.swift in Sources */,
 				34C7407B27E20DC5003F4E67 /* PlanetViewController.swift in Sources */,
 				34DD2D5627EA205A006B017C /* UnlockedAchievementTableViewCell.swift in Sources */,
 				34C7405827E0B574003F4E67 /* HomeViewController.swift in Sources */,
+				34DD2D5E27EC8D28006B017C /* BaseViewController.swift in Sources */,
 				34DD2CF527E37BB7006B017C /* UserDefaultsWrapper.swift in Sources */,
 				34DD2CF927E37D29006B017C /* Constants.swift in Sources */,
 				34C7406A27E0C0F4003F4E67 /* TabBarController.swift in Sources */,

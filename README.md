@@ -1,4 +1,4 @@
-Zenith App
+# Zenith 
 
 Project Description:
 My second pet project, Zenith, is an app representing objects of Solar system to user and some information about them. App has some cool features such as: Augmented Reality view Solar system objects, daily push notifications with facts about Solar system, achievements feature, settings and ability to see Wikipedia page of each object.

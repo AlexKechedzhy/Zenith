@@ -8,12 +8,15 @@
 import Foundation
 import Combine
 
+
 protocol EventNotifierServiceProtocol: AnyObject {
     associatedtype Event
     
     var publisher: PassthroughSubject<Event, Never> { get }
 }
 
+// Class which allows to be subscribed to in order to trigger events in subscribed ViewController (Alert)
+// Cases in Event enum are triggered through AchievementsModel
 class EventNotifierService: EventNotifierServiceProtocol {
     enum Event {
         case didUpdateSettings(title: String, message: String)

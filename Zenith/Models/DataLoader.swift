@@ -7,13 +7,16 @@
 
 import Foundation
 
+// Class for decoding JSON data with planet info as PlanetData struct
 class DataLoader {
+    
     var data = [PlanetData]()
     
     init() {
         loadData()
     }
     
+    // Method for decoding JSON
     func loadData() {
         if let fileLocation = Bundle.main.url(forResource: "JSONData", withExtension: "json") {
             do {
@@ -26,5 +29,4 @@ class DataLoader {
             }
         }
     }
-    
 }

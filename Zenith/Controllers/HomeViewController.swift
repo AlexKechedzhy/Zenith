@@ -10,8 +10,6 @@ import Combine
 
 class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    
-    
     @IBOutlet weak var viewForCollectionView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -34,10 +32,13 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
         collectionView.reloadData()
     }
     
+    
+    // Defining number of Planet cells to be created as per planetsInfo
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return planetsInfo.count
     }
     
+    // Setting up cells' contents
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlanetCell", for: indexPath) as! CollectionViewCell
         let info = planetsInfo[indexPath.item]
@@ -80,6 +81,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
         return cell
     }
     
+    // Updating CollectionView cell size to fit the Screen
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let height = collectionView.bounds.height
@@ -87,23 +89,27 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
         return CGSize(width: width , height: height )
     }
     
+    // Method for setting up the CollectionView (Delegate, Datasource and registering UINib)
+    private func setupCollectionView() {
+        collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PlanetCell")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+    
+    // Performing segue when collectionView cell is selected
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedCellId = indexPath.item
         performSegue(withIdentifier: "planetSeque", sender: self)
         
     }
     
+    // Method for preparing segue and passing PlanetData (info)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         let destinationVC = segue.destination as! PlanetViewController
         destinationVC.info = planetsInfo[selectedCellId]
         
     }
     
-    private func setupCollectionView() {
-        collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PlanetCell")
-        collectionView.delegate = self
-        collectionView.dataSource = self
-    }
     
 }
 

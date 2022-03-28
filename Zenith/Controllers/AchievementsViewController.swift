@@ -9,8 +9,6 @@ import UIKit
 
 class AchievementsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
-    
     var achievements: [Bool] = []
     var achievementModel = AchievementsModel()
     let constants = Constants()
@@ -21,17 +19,18 @@ class AchievementsViewController: BaseViewController, UITableViewDelegate, UITab
         setupTableView()
     }
 
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateAchievementsArray()
         tableView.reloadData()
     }
     
+    // Defining number of Achievement cells to be created as per achievements array
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return achievements.count
     }
     
+    // Setting up TableView cells' contents
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if achievements[indexPath.row] == true {
@@ -45,10 +44,9 @@ class AchievementsViewController: BaseViewController, UITableViewDelegate, UITab
             cell.cellView.layer.cornerRadius = 15
             return cell
         }
-        
-        
     }
     
+    // Method for setting up the TableView (Delegate, Datasource and registering UINibs)
     private func setupTableView() {
         tableView.register(UINib(nibName: "LockedAchievementTableViewCell", bundle: nil), forCellReuseIdentifier: "lockedCell")
         tableView.register(UINib(nibName: "UnlockedAchievementTableViewCell", bundle: nil), forCellReuseIdentifier: "unlockedCell")
@@ -56,6 +54,7 @@ class AchievementsViewController: BaseViewController, UITableViewDelegate, UITab
         tableView.dataSource = self
     }
     
+    // Method for updating Achievements Array (may be either true or false)
     private func updateAchievementsArray() {
         achievements = [
             AppDefaultsData.viewAllPlanetsInAR,

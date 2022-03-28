@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Struct for holding some constants
 struct Constants {
     let settingsLabels = [
         "High resolution Planets",

@@ -23,13 +23,7 @@ class SettingsTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+    // Updating settings when Switch button is switched
     @IBAction func switchButton(_ sender: UISwitch) {
         achievementsModel.trackSettingsAchievement()
         if sender.isOn {
@@ -39,7 +33,7 @@ class SettingsTableViewCell: UITableViewCell {
         }
     }
     
-  
+    // Updating setting when Segmented button is switched
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         achievementsModel.trackSettingsAchievement()
         if sender.selectedSegmentIndex == 0 {
@@ -50,6 +44,4 @@ class SettingsTableViewCell: UITableViewCell {
             AppDefaultsData.temperatureUnit = 2
         }
     }
-    
-    
 }

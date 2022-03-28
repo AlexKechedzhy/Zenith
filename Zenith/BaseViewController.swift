@@ -8,6 +8,8 @@
 import UIKit
 import Combine
 
+// This Class subscribes for EventNotifier's Events (completing achievemtns) and defines Alert displaying method.
+// All ViewControllers, which should display the alert, inherit BaseViewController Class.
 class BaseViewController: UIViewController {
     
     private var cancellableBag: Set<AnyCancellable> = []
@@ -18,6 +20,7 @@ class BaseViewController: UIViewController {
         subscribeForEvents()
     }
     
+    // Subscribing to eventNotifier's Events
     private func subscribeForEvents() {
         eventNotifier
             .publisher
@@ -44,6 +47,7 @@ class BaseViewController: UIViewController {
             .store(in: &cancellableBag)
     }
     
+    // Displaying Achievement Alert when Event is triggered
     private func presentAchievementAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))

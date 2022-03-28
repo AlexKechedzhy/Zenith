@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Struct for managing UserDefaults Data
 struct AppDefaultsData {
     
     //MARK: - Settings userDefaults

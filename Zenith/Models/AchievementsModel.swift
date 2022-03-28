@@ -7,16 +7,15 @@
 
 import UIKit
 
-
+// This class is created for tracking process of completing achievements
 class AchievementsModel {
     
 
     var timer = Timer()
     
-    //
     var eventNotifier = EventNotifierService.shared
-    //
     
+    // Method for tracking Achievement #1 (Visiting all 10 ARViews)
     func trackARViewsAchievement(id: Int) {
         switch id {
         case 0:
@@ -63,7 +62,7 @@ class AchievementsModel {
         }
     }
     
-    
+    // Method for tracking Achievement #2 (Visiting all 10 Wiki pages)
     func trackWikiVisitsAchievement(id: Int) {
         switch id {
         case 0:
@@ -111,13 +110,15 @@ class AchievementsModel {
         }
     }
     
+    // Method for starting tracking time spent in App
     func startTrackingTime() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(trackSeconds), userInfo: nil, repeats: true)
     }
     
+    // Method for tracking Achievement #3 (Spending 10 minutes in App)
     @objc func trackSeconds() {
         AppDefaultsData.secondsSpentInApp += 1
-        if AppDefaultsData.secondsSpentInApp >= 60 {
+        if AppDefaultsData.secondsSpentInApp >= 600 {
             if AppDefaultsData.spent10MinutesInApp == false {
                 AppDefaultsData.spent10MinutesInApp = true
                 print("Completed 10 Min Achievement!")
@@ -126,13 +127,12 @@ class AchievementsModel {
         }
     }
     
-    
+    // Method for stopping tracking time spent in App
     func stopTrackingTime() {
         timer.invalidate()
-        print(AppDefaultsData.secondsSpentInApp)
     }
     
-    
+    // Method for tracking Achievement #4 (Changing any setting in SettingsViewController)
     func trackSettingsAchievement() {
         if AppDefaultsData.changeSomeSettings == false {
             AppDefaultsData.changeSomeSettings = true
@@ -142,7 +142,7 @@ class AchievementsModel {
     }
     
     
-    
+    // Method for tracking Achievement #5 (Visit Mars PlanetViewController 10 times)
     func trackMarsVisitsAchievement() {
         AppDefaultsData.marsPageVisited += 1
         print("Mars Page visited: \(AppDefaultsData.marsPageVisited)")

@@ -11,6 +11,7 @@ import FirebaseMessaging
 import UserNotifications
 
 
+// Firebase features (Push notifications) are configured inside APPDelegate
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
 

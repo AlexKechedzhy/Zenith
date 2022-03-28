@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Struct which defines which Data is stored inside PlanetData when JSON data is decoded.
 struct PlanetData: Codable {
     var id: Int?
     var name: String?

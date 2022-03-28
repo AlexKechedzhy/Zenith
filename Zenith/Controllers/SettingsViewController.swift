@@ -25,7 +25,6 @@ enum Settings: CaseIterable {
             return "temperatureUnit"
         }
     }
-    
 }
 
 class SettingsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
@@ -47,11 +46,12 @@ class SettingsViewController: BaseViewController, UITableViewDelegate, UITableVi
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    
+    // Defining number of Settings cells to be created as per Settings enum
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Settings.allCases.count
     }
     
+    // Setting up TableView cells' contents
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingCell", for: indexPath) as! SettingsTableViewCell
         cell.label.text = constants.settingsLabels[indexPath.row]
@@ -68,15 +68,10 @@ class SettingsViewController: BaseViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-    }
-    
+    // Method for setting up the TableView (Delegate, Datasource and registering UINibs)
     private func setupTableView() {
         tableView.register(UINib(nibName: "SettingsTableViewCell", bundle: nil), forCellReuseIdentifier: "settingCell")
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
-    
 }

@@ -40,7 +40,7 @@ class ARViewController: BaseViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
-    
+    // Method for creating Planet 3D object
     private func createPlanet() {
         let sphere = SCNSphere(radius: 0.2)
         let material = SCNMaterial()
@@ -66,6 +66,7 @@ class ARViewController: BaseViewController, ARSCNViewDelegate {
        
     }
     
+    // Method for creating Rings if the planet is Saturn
     private func createRings() {
         let ring = SCNTorus(ringRadius: 0.30, pipeRadius: 0.07)
         let ringMaterial = SCNMaterial()

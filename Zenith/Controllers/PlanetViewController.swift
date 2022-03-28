@@ -34,15 +34,15 @@ class PlanetViewController: BaseViewController {
         if info?.name == "Mars" {
             achievementsModel.trackMarsVisitsAchievement()
         }
-        
-        
     }
     
+    // Method for triggering openWikiPage when Wiki button is pressed
     @IBAction func wikiButtonPressed(_ sender: UIButton) {
         achievementsModel.trackWikiVisitsAchievement(id: (info?.id)!)
         openWikiPage(url: info?.wikiLink)
     }
     
+    // Method for visiting Wiki page
     private func openWikiPage(url: String?) {
         if let url = URL.init(string: url ?? "") {
             
@@ -51,22 +51,24 @@ class PlanetViewController: BaseViewController {
             print ("Error while opening link.")
         }
     }
+    
+    // Preparing a segue to pass PlanetData (info) to ARViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         let destinationVC = segue.destination as! ARViewController
             destinationVC.info = info
     }
     
-    
+    // Setting up Labels
     private func setupLabels() {
         planetNameLabel.text = info?.name
         descriptionLabel.text = info?.description
         planetImage.image = UIImage(named: (info?.pageImageName)!)
     }
     
+    // Setting up UIViews' corner Radius
     private func setupViews() {
         planetNameView.layer.cornerRadius = 15
         descriptionView.layer.cornerRadius = 15
         wikiButtonView.layer.cornerRadius = 15
     }
-    
 }
